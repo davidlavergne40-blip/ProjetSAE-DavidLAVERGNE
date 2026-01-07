@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faire un Don - SchoolHelp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="images/img3.png" alt="Logo SchoolHelp">
+        </div>
+        <h1>SchoolHelp</h1>
+        <nav>
+            <ul>
+                <li><a href="index.htm">Accueil</a></li>
+                <li><a href="benevole/benevole.htm">Bénévoles</a></li>
+                <li><a href="ONG/ong.htm">ONGs</a></li>
+                <li><a href="DemandeAide/help.php">Demande d'aide</a></li>
+                <li><a href="contact.htm">Contactez-nous</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Soutenez nos actions</h1>
+        <p>Votre générosité permet de financer des projets éducatifs concrets.</p>
+
+        <div style="display: flex; gap: 40px; margin-top: 40px;">
+
+            <div style="flex: 1; border: 2px solid var(--primary-green); padding: 30px; border-radius: 10px;">
+                <h2>Don Financier</h2>
+                <p>Soutenez les opérations sur le terrain.</p>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label>Montant du don (€) :</label>
+                        <input type="number" name="montant" placeholder="Ex: 50" required>
+                    </div>
+                    <div class="form-group checkbox-group">
+                         <label style="display:block; margin-bottom: 10px;">Fréquence :</label>
+                        <input type="radio" id="une_fois" name="frequence" value="une_fois" checked>
+                        <label for="une_fois">Une fois</label><br>
+                        <input type="radio" id="mensuel" name="frequence" value="mensuel">
+                        <label for="mensuel">Mensuel</label>
+                    </div>
+                    <div class="form-group">
+                        <label>Email (pour le reçu fiscal) :</label>
+                        <input type="email" name="email_donateur" required>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Procéder au paiement sécurisé</button>
+                </form>
+            </div>
+
+            <div style="flex: 1; background-color: #f0f2eb; padding: 30px; border-radius: 10px;">
+                <h2>Don Matériel (Colis)</h2>
+                <p>Vous souhaitez envoyer du matériel scolaire, des livres ou des équipements informatiques ?</p>
+                <p>Nous organisons des collectes et des envois de colis vers les institutions partenaires.</p>
+                
+                <h3>Comment faire ?</h3>
+                <ol style="margin-left: 20px;">
+                    <li>Préparez votre colis (fournitures neuves ou en très bon état).</li>
+                    <li>Téléchargez l'étiquette d'envoi via notre partenaire logistique.</li>
+                    <li>Déposez le colis en point relais.</li>
+                </ol>
+                
+                <a href="#" class="btn" style="margin-top: 20px;">Obtenir une étiquette d'envoi</a>
+                <p class="small" style="margin-top: 10px;">(Nécessite une connexion bénévole ou ONG)</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="copyright">
+            &copy; 2025 SchoolHelp.
+        </div>
+    </footer>
+
+</body>
+</html>
