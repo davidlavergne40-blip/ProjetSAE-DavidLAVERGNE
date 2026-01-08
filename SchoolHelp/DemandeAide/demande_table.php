@@ -13,10 +13,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $checkSql = "SELECT id FROM demandes_aide WHERE nom_institution = :nom_inst"; 
         $stmtCheck = $pdo->prepare($checkSql);
         $stmtCheck->execute([':nom_inst' => $nom]); 
+        $checkSql2 = "SELECT id FROM demandes_aide WHERE email = :email_inst"; 
+        $stmtCheck2 = $pdo->prepare($checkSql2);
+        $stmtCheck2->execute([':email_inst' => $email]); 
 
-        if ($stmtCheck->rowCount() > 0) {
+        if ($stmtCheck->rowCount() > 0 || $stmtCheck2->rowCount() > 0) {
             
-            echo "Attention : Cette institution est déjà inscrite !";
+            echo "Attention : Une institution avec le même nom/email est déjà inscrite !";
         }
         else {
         $pdo->beginTransaction();

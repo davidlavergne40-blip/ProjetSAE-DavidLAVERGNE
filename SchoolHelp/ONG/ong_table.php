@@ -16,10 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $checkSql = "SELECT id FROM ong WHERE nom = :nom"; 
         $stmtCheck = $pdo->prepare($checkSql);
         $stmtCheck->execute([':nom' => $nom]); 
+        $checkSql2 = "SELECT id FROM ong WHERE email = :email_ong"; 
+        $stmtCheck2 = $pdo->prepare($checkSql2);
+        $stmtCheck2->execute([':email_ong' => $email]); 
 
-        if ($stmtCheck->rowCount() > 0) {
+        if ($stmtCheck->rowCount() > 0 || $stmtCheck2->rowCount() > 0) {
             
-            echo "Attention : Cette ONG est déjà inscrite !";
+            echo "Attention : Une ONG avec ce nom/email est déjà inscrite !";
         }
         else {
         
