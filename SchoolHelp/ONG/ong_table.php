@@ -12,6 +12,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         
+        
+        $checkSql = "SELECT id FROM ong WHERE nom = :nom"; 
+        $stmtCheck = $pdo->prepare($checkSql);
+        $stmtCheck->execute([':nom' => $nom]); 
+
+        if ($stmtCheck->rowCount() > 0) {
+            
+            echo "Attention : Cette ONG est déjà inscrite !";
+        }
+        else {
+        
         $pdo->beginTransaction();
 
         $sql = "INSERT INTO ong (nom, email, description, effectif, budget, date_inscription) 
@@ -38,11 +49,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     ':ong_id' => $last_ong_id,
                     ':type_id' => (int)$type_id
                 ]);
+            
             }
         }
-
         $pdo->commit();
         ?>
+
 <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -75,6 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </body>       
 
         <?php
+            }
     } 
     catch (PDOException $e) {
         

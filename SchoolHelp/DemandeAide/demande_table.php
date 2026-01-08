@@ -8,6 +8,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $details = ($_POST['details_besoins']);
      
     try {
+        
+        
+        $checkSql = "SELECT id FROM demandes_aide WHERE nom_institution = :nom_inst"; 
+        $stmtCheck = $pdo->prepare($checkSql);
+        $stmtCheck->execute([':nom_inst' => $nom]); 
+
+        if ($stmtCheck->rowCount() > 0) {
+            
+            echo "Attention : Cette institution est déjà inscrite !";
+        }
+        else {
         $pdo->beginTransaction();
 
         $sql = "INSERT INTO demandes_aide (nom_institution, email, details_besoins, date_demande) 
@@ -69,6 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <a style="padding: 30px" href='../index.htm'>Retour à l'accueil</a>
     </body>       
     <?php
+        }
     }
     catch (PDOException $e) {
         $pdo->rollBack();
